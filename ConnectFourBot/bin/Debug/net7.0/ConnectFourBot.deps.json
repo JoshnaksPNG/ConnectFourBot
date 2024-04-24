@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "ConnectFourBot/1.0.0": {
+        "dependencies": {
+          "BotDLL": "0.0.0.0"
+        },
+        "runtime": {
+          "ConnectFourBot.dll": {}
+        }
+      },
+      "BotDLL/0.0.0.0": {
+        "runtime": {
+          "BotDLL.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ConnectFourBot/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BotDLL/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

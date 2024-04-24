@@ -1,0 +1,63 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+*.vsidx
+*.lock
+BotDLL/.vs/BotDLL/v17/.suo
+*.db
+*.db-shm
+*.db-wal
+*.opendb
+*.ipch
+*.vcxproj
+*.filters
+*.user
+BotDLL/BotDLL.sln
+BotDLL/x64/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+*.metagen
+*.recipe
+*.exp
+*.log
+*.pdb
+*.lastbuildstate
+*.tlog
+*.cache
+BotDLL/x64/Debug/BotDLL.vcxproj.FileListAbsolute.txt
+*.v2
+ConnectFourBot/.vs/ConnectFourBot/v17/.suo
+*.1
+ConnectFourBot/ConnectFourBot.sln
+ConnectFourBot/obj/ConnectFourBot.csproj.nuget.dgspec.json
+ConnectFourBot/obj/ConnectFourBot.csproj.nuget.g.props
+*.targets
+/ConnectFourBot/obj/Debug/net7.0
+ConnectFourBot/obj/project.assets.json
