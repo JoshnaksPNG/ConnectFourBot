@@ -11,14 +11,22 @@ namespace ConnectFourBot.BotInnards
     internal class Bot
     {
         [DllImport("botDLL.dll")]
-        public static extern IntPtr Create(int x);
+        private static extern IntPtr NewBot();
+
+        [DllImport("botDLL.dll")]
+        private static extern int SuggestColumn(IntPtr bot);
 
 
         IntPtr internalBot;
 
-        public Bot(int x)
+        public Bot()
         {
-            internalBot = Create(x);
+            internalBot = NewBot();
+        }
+
+        public int suggestColumn()
+        {
+            return SuggestColumn(internalBot);
         }
 
     }

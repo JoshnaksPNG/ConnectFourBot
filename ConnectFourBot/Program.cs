@@ -25,9 +25,9 @@ board.DropPiece(3, Board.PieceType.Yellow);
 
 Console.WriteLine(board.ToString());
 
-Bot bot = new Bot(10);
+Bot bot = new Bot();
 
-Console.WriteLine(bot.add(9));
+Console.WriteLine(bot.suggestColumn());
 
 //string dllshit = board.getDllPlacement();
 

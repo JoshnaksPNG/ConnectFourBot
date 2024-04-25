@@ -75,14 +75,20 @@ class Bot
 
 	// Need to find a better way to key this map
 	//std::unordered_map<std::pair<long, long>, BoardTreeNode*> allPossibleBoards;
+	std::unordered_map<std::string, BoardTreeNode*> allPossibleBoards;
 
 public:
-	Bot(int x);
-	int add(int y);
-
+	Bot();
+	int suggestColumn();
+	
 };
 
-extern "C" __declspec(dllexport) void* Create(int x)
+extern "C" __declspec(dllexport) void* NewBot()
 {
-	return (void*) new Bot(x);
+	return (void*) new Bot();
+}
+
+extern "C" __declspec(dllexport) int SuggestColumn(Bot bot)
+{
+	return bot.suggestColumn();
 }

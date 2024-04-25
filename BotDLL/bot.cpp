@@ -5,15 +5,16 @@
 #include<string>
 
 // Bot Implementations
-Bot::Bot(int x)
+Bot::Bot()
 {
-	//this->x = x;
+	
 }
 
-int Bot::add(int y)
+int Bot::suggestColumn()
 {
-	return 5;// this->x + y;
+	return -1;
 }
+
 
 // Board implementations
 Board::Board()
@@ -187,6 +188,8 @@ BoardTreeNode::BoardTreeNode(BoardPiece startingPiece, int rank)
 	this->currentBoard->dropPiece(rank, startingPiece);
 
 	this->lastMove = startingPiece;
+
+	this->score = 0;
 }
 
 BoardTreeNode::BoardTreeNode(BoardTreeNode* lastBoard, int rank)
@@ -210,6 +213,8 @@ BoardTreeNode::BoardTreeNode(BoardTreeNode* lastBoard, int rank)
 	this->currentBoard->dropPiece(rank, currentPiece);
 
 	this->lastMove = currentPiece;
+
+	this->score = 0;
 }
 
 void BoardTreeNode::generatePossibleChildren()
