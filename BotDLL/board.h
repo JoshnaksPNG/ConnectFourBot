@@ -44,7 +44,8 @@ public:
 	std::array<BoardTreeNode*, 7> possibleBoards;
 
 	BoardPiece lastMove;
-	Board* currentBoard;
+	// Board* currentBoard;
+	BitBoard* currentBoard;
 
 	int score;
 	int minMaxRound;
@@ -60,7 +61,7 @@ class BitBoard
 public:
 	BitBoard();
 	BitBoard(BoardPiece startingPiece, short rank);
-	BitBoard(long pBitboard, long oBitboard);
+	BitBoard(long pBitboard, long oBitboard, short pieces);
 
 	long pBoard;
 	long oBoard;

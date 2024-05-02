@@ -177,8 +177,8 @@ int Board::getPieces()
 // BoardTreeNode Implementations
 BoardTreeNode::BoardTreeNode(BoardPiece startingPiece, int rank)
 {
-	this->currentBoard = new Board();
-	this->currentBoard->dropPiece(rank, startingPiece);
+	this->currentBoard = new BitBoard();
+	this->currentBoard->dropPiece(startingPiece, rank);
 
 	this->lastMove = startingPiece;
 
@@ -190,8 +190,10 @@ BoardTreeNode::BoardTreeNode(BoardPiece startingPiece, int rank)
 
 BoardTreeNode::BoardTreeNode(BoardTreeNode* lastBoard, int rank)
 {
-	long pBoard = lastBoard->currentBoard->getPBitboard();
-	long oBoard = lastBoard->currentBoard->getOBitboard();
+	long pBoard = lastBoard->currentBoard->pBoard;
+	long oBoard = lastBoard->currentBoard->oBoard;
+
+	short pieceCount = lastBoard->currentBoard->pieces;
 
 	BoardPiece currentPiece;
 
@@ -205,8 +207,8 @@ BoardTreeNode::BoardTreeNode(BoardTreeNode* lastBoard, int rank)
 	}
 
 
-	this->currentBoard = new Board(pBoard, oBoard);
-	this->currentBoard->dropPiece(rank, currentPiece);
+	this->currentBoard = new BitBoard(pBoard, oBoard, pieceCount);
+	this->currentBoard->dropPiece(currentPiece, rank);
 
 	this->lastMove = currentPiece;
 
@@ -243,7 +245,7 @@ void BoardTreeNode::generateFutureChildren(int depth)
 
 std::pair<long, long> BoardTreeNode::getBoardKey()
 {
-	return std::pair<long, long>(currentBoard->getPBitboard(), currentBoard->getOBitboard());
+	return std::pair<long, long>(currentBoard->pBoard, currentBoard->oBoard);
 }
 
 BitBoard::BitBoard()
@@ -262,6 +264,14 @@ BitBoard::BitBoard(BoardPiece startingPiece, short rank)
 	pieces = 0;
 
 	dropPiece(startingPiece, rank);
+}
+
+BitBoard::BitBoard(long pBitboard, long oBitboard, short pieces)
+{
+	pBoard = pBitboard;
+	oBoard = oBitboard;
+
+	this->pieces = pieces;
 }
 
 // Rank is 0-6
