@@ -20,5 +20,10 @@ public:
 	Bot();
 	int suggestColumn();
 	void generateNodeChildren(BoardTreeNode* rootNode, int depth);
+	int minimax(BoardTreeNode* rootNode, int depth, int alpha, int beta);
+
+	int determineBoardVal(BoardTreeNode* node);
+
+	int minMaxRound;
 };
 

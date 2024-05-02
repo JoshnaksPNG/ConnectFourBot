@@ -183,6 +183,7 @@ BoardTreeNode::BoardTreeNode(BoardPiece startingPiece, int rank)
 	this->lastMove = startingPiece;
 
 	this->score = 0;
+	this->minMaxRound = 0;
 
 	//this->parentBot = bot;
 }
@@ -210,6 +211,7 @@ BoardTreeNode::BoardTreeNode(BoardTreeNode* lastBoard, int rank)
 	this->lastMove = currentPiece;
 
 	this->score = 0;
+	this->minMaxRound = 0;
 
 	//this->parentBot = bot;
 }
@@ -266,6 +268,11 @@ BitBoard::BitBoard(BoardPiece startingPiece, short rank)
 // Height is 0-5
 bool BitBoard::dropPiece(BoardPiece piece, short rank)
 {
+	if (piece == Empty || pieces >= 42)
+	{
+		return false;
+	}
+
 	short height = 0;
 	bool empty_spot = false;
 

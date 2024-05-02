@@ -47,6 +47,7 @@ public:
 	Board* currentBoard;
 
 	int score;
+	int minMaxRound;
 
 	void generatePossibleChildren();
 	void generateFutureChildren(int depth);
@@ -59,9 +60,12 @@ class BitBoard
 public:
 	BitBoard();
 	BitBoard(BoardPiece startingPiece, short rank);
+	BitBoard(long pBitboard, long oBitboard);
 
 	long pBoard;
 	long oBoard;
+
+	short pieces;
 
 	bool dropPiece(BoardPiece piece, short rank);
 

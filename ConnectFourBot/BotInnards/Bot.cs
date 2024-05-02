@@ -29,5 +29,6 @@ namespace ConnectFourBot.BotInnards
             return SuggestColumn(internalBot);
         }
 
+        
     }
 }

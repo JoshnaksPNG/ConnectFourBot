@@ -8,7 +8,7 @@
 // Bot Implementations
 Bot::Bot()
 {
-	
+	this->minMaxRound = 0;
 }
 
 int Bot::suggestColumn()
@@ -41,4 +41,69 @@ void Bot::generateNodeChildren(BoardTreeNode* rootNode, int depth)
 	}
 }
 
+int Bot::minimax(BoardTreeNode* rootNode, int depth, int alpha, int beta)
+{
+	int value;
 
+	if (rootNode->minMaxRound == this->minMaxRound)
+	{
+		return rootNode->score;
+	}
+
+	if (depth <= 0 /*Or is End Node*/)
+	{
+		value = determineBoardVal(rootNode);
+	}
+	else
+	{
+		// Maximizing
+		if (rootNode->lastMove == Player)
+		{
+			value = INT_MIN;
+
+			for each (BoardTreeNode * node in rootNode->possibleBoards)
+			{
+				if (node != NULL)
+				{
+					value = max(value, minimax(node, depth - 1, alpha, beta));
+
+					alpha = max(alpha, value);
+
+					if (alpha >= beta)
+					{
+						break;
+					}
+				}
+			}
+		}
+		else // Minimizing
+		{
+			value = INT_MAX;
+
+			for each (BoardTreeNode * node in rootNode->possibleBoards)
+			{
+				if (node != NULL)
+				{
+					value = min(value, minimax(node, depth - 1, alpha, beta));
+
+					beta = min(alpha, value);
+
+					if (alpha >= beta)
+					{
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	rootNode->minMaxRound = this->minMaxRound;
+	rootNode->score = value;
+
+	return value;
+}
+
+int Bot::determineBoardVal(BoardTreeNode* node)
+{
+	return -1;
+}
