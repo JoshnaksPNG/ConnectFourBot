@@ -19,6 +19,6 @@ class Bot
 public:
 	Bot();
 	int suggestColumn();
-	void generateNodeChildren(BoardTreeNode rootNode, int depth);
+	void generateNodeChildren(BoardTreeNode* rootNode, int depth);
 };
 
