@@ -34,6 +34,22 @@ public:
 	int getPieces();
 };
 
+class BitBoard
+{
+public:
+	BitBoard();
+	BitBoard(BoardPiece startingPiece, short rank);
+	BitBoard(long pBitboard, long oBitboard, short pieces);
+
+	long pBoard;
+	long oBoard;
+
+	short pieces;
+
+	bool dropPiece(BoardPiece piece, short rank);
+
+};
+
 class BoardTreeNode
 {
 public:
@@ -56,22 +72,6 @@ public:
 	std::pair<long, long> getBoardKey();
 };
 
-class BitBoard
-{
-public:
-	BitBoard();
-	BitBoard(BoardPiece startingPiece, short rank);
-	BitBoard(long pBitboard, long oBitboard, short pieces);
-
-	long pBoard;
-	long oBoard;
-
-	short pieces;
-
-	bool dropPiece(BoardPiece piece, short rank);
-
-};
-
 template<> struct std::hash<std::pair<long, long>>
 {
 	std::size_t operator()(std::pair<long, long> const& obj) const noexcept
@@ -82,3 +82,5 @@ template<> struct std::hash<std::pair<long, long>>
 		return h1 ^ h2;
 	}
 };
+
+
