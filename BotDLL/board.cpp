@@ -185,6 +185,8 @@ BoardTreeNode::BoardTreeNode(BoardPiece startingPiece, int rank)
 	this->score = 0;
 	this->minMaxRound = 0;
 
+	this->hasConnection = false;
+
 	//this->parentBot = bot;
 }
 
@@ -215,7 +217,7 @@ BoardTreeNode::BoardTreeNode(BoardTreeNode* lastBoard, int rank)
 	this->score = 0;
 	this->minMaxRound = 0;
 
-	//this->parentBot = bot;
+	this->hasConnection = false;
 }
 
 void BoardTreeNode::generatePossibleChildren()

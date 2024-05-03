@@ -66,6 +66,8 @@ public:
 	int score;
 	int minMaxRound;
 
+	bool hasConnection;
+
 	void generatePossibleChildren();
 	void generateFutureChildren(int depth);
 

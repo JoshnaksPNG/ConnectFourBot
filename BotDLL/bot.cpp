@@ -5,6 +5,9 @@
 #include<array>
 #include<string>
 
+#define BOARD_WIDTH 7
+#define BOARD_HEIGHT 6
+
 // Bot Implementations
 Bot::Bot()
 {
@@ -29,6 +32,7 @@ void Bot::generateNodeChildren(BoardTreeNode* rootNode, int depth)
 			// If allPossibleBoards doesn't contain the board mentioned
 			if (this->allPossibleBoards.find(checkKey) != this->allPossibleBoards.end())
 			{
+				boardHasConnect(checkedBoard);
 				rootNode->possibleBoards[i] = checkedBoard;
 
 				generateNodeChildren(checkedBoard, depth - 1);
@@ -145,16 +149,66 @@ bool Bot::boardHasConnect(BoardTreeNode* node)
 
 	bool hasConnect = false;
 
-	// Check Horizontal
+	// Check Horizontal (1)
+	for (int y = 0; y < BOARD_HEIGHT; ++y)
+	{
+		for (int x = 0; x < BOARD_WIDTH - 3; ++x)
+		{
+			hasConnect = matchWindow(checkedBoard, x, y, 1);
 
+			if (hasConnect)
+			{
+				node->hasConnection = true;
+				return true;
+			}
+		}
+	}
 
-	// Check Vertical
+	// Check Vertical (7)
+	for (int y = 0; y < BOARD_HEIGHT - 2; ++y)
+	{
+		for (int x = 0; x < BOARD_WIDTH; ++x)
+		{
+			hasConnect = matchWindow(checkedBoard, x, y, 7);
 
+			if (hasConnect)
+			{
+				node->hasConnection = true;
+				return true;
+			}
+		}
+	}
 
 	// Check Diagonal (6)
+	for (int y = 0; y < BOARD_HEIGHT - 2; ++y)
+	{
+		for (int x = 3; x < BOARD_WIDTH; ++x)
+		{
+			hasConnect = matchWindow(checkedBoard, x, y, 6);
+
+			if (hasConnect)
+			{
+				node->hasConnection = true;
+				return true;
+			}
+		}
+	}
 
 
 	// Check Diagonal (8)
+	for (int y = 0; y < BOARD_HEIGHT - 2; ++y)
+	{
+		for (int x = 0; x < BOARD_WIDTH - 3; ++x)
+		{
+			hasConnect = matchWindow(checkedBoard, x, y, 8);
+
+			if (hasConnect)
+			{
+				node->hasConnection = true;
+				return true;
+			}
+		}
+	}
 
 	return false;
 }
