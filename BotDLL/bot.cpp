@@ -107,3 +107,54 @@ int Bot::determineBoardVal(BoardTreeNode* node)
 {
 	return -1;
 }
+
+/******************
+horizontal      : 1
+vertical        : 7
+diagonal(right) : 6
+diagonal(left)  : 8
+******************/
+bool Bot::matchWindow(long board, short x, short y, short distance)
+{
+	long mask = 1;
+	mask = mask << x;
+	mask = mask << (y * 7);
+
+	bool isMatch = true;
+
+	for (int i = 0; i < 4; ++i)
+	{
+		isMatch == isMatch && (board & mask);
+
+		mask = mask << distance;
+
+		if (!isMatch)
+		{
+			break;
+		}
+	}
+
+	return isMatch;
+}
+
+bool Bot::boardHasConnect(BoardTreeNode* node)
+{
+	long checkedBoard = node->lastMove == Player ? 
+		node->currentBoard->pBoard :
+		node->currentBoard->oBoard;
+
+	bool hasConnect = false;
+
+	// Check Horizontal
+
+
+	// Check Vertical
+
+
+	// Check Diagonal (6)
+
+
+	// Check Diagonal (8)
+
+	return false;
+}

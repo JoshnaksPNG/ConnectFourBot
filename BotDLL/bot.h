@@ -24,6 +24,9 @@ public:
 
 	int determineBoardVal(BoardTreeNode* node);
 
+	bool matchWindow(long board, short x, short y, short distance);
+	bool boardHasConnect(BoardTreeNode* node);
+
 	int minMaxRound;
 };
 
